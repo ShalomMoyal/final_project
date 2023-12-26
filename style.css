@@ -1,0 +1,38 @@
+body{
+    margin: 0;
+    background-color: black;
+}
+header{
+    display: flex;
+    align-items: center;
+    color: aliceblue;
+    display: flex;
+    background-color: rgb(61, 61, 61);
+    height: 30px;
+    
+}
+.head{
+    margin: 5px;
+}
+
+select{
+    border: 0;
+    padding: 5px;
+    color: aliceblue;
+    background-color: rgb(61, 61, 61);
+    
+}
+#form{
+    padding: 5px;
+    margin-left: auto;
+}
+.container{
+    display: flex;
+    justify-content: center;
+    margin: 10px;
+    height: 90vh;
+}
+.box{
+    border: 2px solid rgb(255, 255, 255);
+    width: 70vh;
+}
