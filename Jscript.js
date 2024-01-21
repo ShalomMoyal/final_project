@@ -4,6 +4,7 @@ function search() {
     var searchQuery = document.getElementById('query').value;
  
 }
+// ffff
 function selcetMovie(){
 
   let value = document.getElementById("genre").value;
