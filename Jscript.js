@@ -1,11 +1,25 @@
 const API_Token = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5OGQwZmYxOWJlNzEzYjkyMmQzYWRmZjUyMWM3ZDczNCIsInN1YiI6IjY1ODMzNWY5ZTI5NWI0M2NiYjY4NTMzYiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.SBTase5fJJEEeMpSTLMDBWxp4pY1S7OKVnSIoV5NzHk";
 
+function clearItems() {
+  // Use querySelectorAll and forEach to remove items
+  document.querySelectorAll(".item").forEach(item => {
+    item.remove();
+  });
+}
+
+let searchButten = document.querySelector('#butt');
+searchButten.addEventListener('click', (a)=>{
+
+})
+
 function search() {
+    clearItems();
     var searchQuery = document.getElementById('query').value;
+    const element = document.querySelectorAll(".item");
+    element.remove();
  
 }
 //
-// ffff  dfdfdfsdfsd 
 function selcetMovie(){
 
   let value = document.getElementById("genre").value;
@@ -50,18 +64,15 @@ function printImg(response){
     });
 }
 
-
 const options = {
-    method: 'GET',
-    headers: {
-      accept: 'application/json',
-      Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5OGQwZmYxOWJlNzEzYjkyMmQzYWRmZjUyMWM3ZDczNCIsInN1YiI6IjY1ODMzNWY5ZTI5NWI0M2NiYjY4NTMzYiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.SBTase5fJJEEeMpSTLMDBWxp4pY1S7OKVnSIoV5NzHk'
-    }
-  };
-  
-  fetch('https://api.themoviedb.org/3/movie/now_playing', options)
-    .then(response => response.json())
-    .then(response => printImg(response))
-    .catch(err => console.error(err));
+  method: 'GET',
+  headers: {
+    accept: 'application/json',
+    Authorization: `Bearer ${API_Token}`
+  }
+};
 
-
+fetch('https://api.themoviedb.org/3/movie/now_playing', options)
+  .then(response => response.json())
+  .then(response => printImg(response))
+  .catch(err => console.error(err));
