@@ -7,36 +7,47 @@ function clearItems() {
   });
 }
 
-let searchButten = document.querySelector('#butt');
-searchButten.addEventListener('click', (a)=>{
 
-})
 
-function search() {
-    clearItems();
-    var searchQuery = document.getElementById('query').value;
-    const element = document.querySelectorAll(".item");
-    element.remove();
+function SearchMovie() {
+  clearItems()
+    let searchText = document.getElementById('searchInput').value;
+
+    const options = {
+      method: 'GET',
+      headers: {
+        accept: 'application/json',
+        Authorization: `Bearer ${API_Token}`
+      }
+    };
+    fetch(`https://api.themoviedb.org/3/search/movie?query=${searchText}&include_adult=false&language=en-US&page=1`, options)
+      .then(response => response.json())
+      .then(response => printImg(response))
+      .catch(err => console.error(err));
+  
  
 }
-//
-function selcetMovie(){
+function selectMovieByGenre() {
+  clearItems()
+  // Get the selected genre from the dropdown
+  let genre = document.getElementById('genre').value;
+  console.log(genre);
 
-  let value = document.getElementById("genre").value;
- const options = {
+
+  const options = {
     method: 'GET',
     headers: {
       accept: 'application/json',
-      Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5OGQwZmYxOWJlNzEzYjkyMmQzYWRmZjUyMWM3ZDczNCIsInN1YiI6IjY1ODMzNWY5ZTI5NWI0M2NiYjY4NTMzYiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.SBTase5fJJEEeMpSTLMDBWxp4pY1S7OKVnSIoV5NzHk'
+      Authorization: `Bearer ${API_Token}`
     }
   };
   
-  fetch('https://api.themoviedb.org/3/movie/popular', options)
+  fetch(`https://api.themoviedb.org/3/search/movie?query=${genre}&include_adult=false&language=en-US&page=1`, options)
     .then(response => response.json())
     .then(response => printImg(response))
-    .catch(err => console.error(err));
-
+    .catch(err => console.error(err));;
 }
+
 
 
 function printImg(response){
@@ -49,17 +60,42 @@ function printImg(response){
         const div = document.createElement('div');
         const a = document.createElement('a');
         const img = document.createElement('img');
-        const modal = document.createElement('div');
         const modalContent = document.createElement('div');
         const closeBtn = document.createElement('span');
 
         div.className = 'item';
-        img.src = "https://www.themoviedb.org/t/p/w220_and_h330_face"+ itam.backdrop_path;
+        img.src = "https://www.themoviedb.org/t/p/w220_and_h330_face"+ itam.poster_path;
         a.appendChild(img);
         div.appendChild(a);
         box.appendChild(div);
         section.appendChild(box);
         document.body.appendChild(section);
+
+        // Get the modal
+let modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+let btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+let span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal 
+img.onclick = function() {
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
     
     });
 }
@@ -76,3 +112,27 @@ fetch('https://api.themoviedb.org/3/movie/now_playing', options)
   .then(response => response.json())
   .then(response => printImg(response))
   .catch(err => console.error(err));
+
+
+/*
+  let inganer;
+  response.result.forEach(item => {
+    if(item..result.genre_ids.inculdes(genre)){
+      inganer += item;
+    }
+  })
+  
+  const options = {
+    method: 'GET',
+    headers: {
+      accept: 'application/json',
+      Authorization: `Bearer ${API_Token}`
+    }
+  };
+    
+    fetch(`https://api.themoviedb.org/3/search/include_adult=false`, options)
+      .then(response => response.json())
+      .then(response => printImg(inganer))
+      .catch(err => console.error(err));;
+}
+ */
