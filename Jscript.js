@@ -10,8 +10,12 @@ function clearItems() {
 
 
 function SearchMovie() {
-  clearItems()
-    let searchText = document.getElementById('searchInput').value;
+  //get the text in search bar and send search api
+  let searchText = document.getElementById('searchInput').value;
+  console.log('the text is: ' + searchText);
+  if (searchText != "") {
+    clearItems();
+  }
 
     const options = {
       method: 'GET',
@@ -22,7 +26,7 @@ function SearchMovie() {
     };
     fetch(`https://api.themoviedb.org/3/search/movie?query=${searchText}&include_adult=false&language=en-US&page=1`, options)
       .then(response => response.json())
-      .then(response => printImg(response))
+      .then(response => printDitels(response))
       .catch(err => console.error(err));
   
  
@@ -44,13 +48,14 @@ function selectMovieByGenre() {
   
   fetch(`https://api.themoviedb.org/3/search/movie?query=${genre}&include_adult=false&language=en-US&page=1`, options)
     .then(response => response.json())
-    .then(response => printImg(response))
+    .then(response => printDitels(response))
     .catch(err => console.error(err));;
 }
 
 
 
-function printImg(response){
+function printDitels(response){
+  // print the ditels to the clinet
     console.log(response);
     const section = document.querySelector('.container');
     const box = document.querySelector(".box")
@@ -115,7 +120,7 @@ const options = {
 
 fetch('https://api.themoviedb.org/3/movie/now_playing', options)
   .then(response => response.json())
-  .then(response => printImg(response))
+  .then(response => printDitels(response))
   .catch(err => console.error(err));
 
 
@@ -137,7 +142,9 @@ fetch('https://api.themoviedb.org/3/movie/now_playing', options)
     
     fetch(`https://api.themoviedb.org/3/search/include_adult=false`, options)
       .then(response => response.json())
-      .then(response => printImg(inganer))
+      .then(response => printDitels
+        
+        (inganer))
       .catch(err => console.error(err));;
 }
  */
