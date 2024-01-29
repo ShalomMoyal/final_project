@@ -11,6 +11,7 @@
     <header>
        <p class="head">Now playing</p>
 
+        <!--the select bar-->       
        <select name="movie" id="genre" onchange=selectMovieByGenre() >
             <option value="all">All</option>
             <option value="action">Action</option>
@@ -22,22 +23,24 @@
             <option value="documentary">Documentary</option>
         </select onclick=selectMovieByGenre()>
 
+        <!--the search bar-->
         <form id="form">
             <input type="text" id="searchInput" placeholder="Search...">
             <button type="button" id="butt" onclick="SearchMovie()">Search</button>
         </form>
     </header>
                
-<!-- The Modal -->
-<div id="myModal" class="modal">
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
 
-  <!-- Modal content -->
-  <div class="modal-content">
-    <span class="close">&times;</span>
-    <p>Some text in the Modal..</p>
-  </div>
+      <!-- Modal content -->
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <img src="" alt="" id="img-modal">
+        <p id="p-modal"></p>
+      </div>
 
-</div>
+    </div>
 
         </div>
     </section>

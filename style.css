@@ -86,13 +86,18 @@ img{
   
   /* Modal Content */
   .modal-content {
-    background-color: #fefefe;
+    display: flex;
+    background-color: #dadada;
     margin: auto;
     padding: 20px;
     border: 1px solid #888;
-    width: 80%;
+    width: 50%;
   }
-  
+  .modal-content #img-modal{
+    height: 150px;
+    width: 100px; 
+
+  }
   /* The Close Button */
   .close {
     color: #aaaaaa;

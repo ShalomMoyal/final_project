@@ -72,18 +72,23 @@ function printImg(response){
         document.body.appendChild(section);
 
         // Get the modal
-let modal = document.getElementById("myModal");
+        let modal = document.getElementById("myModal");
 
-// Get the button that opens the modal
-let btn = document.getElementById("myBtn");
+        // Get the button that opens the modal
+        let btn = document.getElementById("myBtn");
 
-// Get the <span> element that closes the modal
-let span = document.getElementsByClassName("close")[0];
+        // Get the <span> element that closes the modal
+        let span = document.getElementsByClassName("close")[0];
 
-// When the user clicks the button, open the modal 
-img.onclick = function() {
-  modal.style.display = "block";
-}
+        let imgmodal =  document.getElementById("img-modal");
+        let p_modal = document.getElementById("p-modal");
+        // When the user clicks the button, open the modal 
+        img.onclick = function() {
+          modal.style.display = "block";
+        imgmodal.src ="https://www.themoviedb.org/t/p/w220_and_h330_face"+ itam.poster_path; 
+        p_modal.innerText = itam.overview;
+        }
+      
 
 // When the user clicks on <span> (x), close the modal
 span.onclick = function() {
@@ -117,8 +122,8 @@ fetch('https://api.themoviedb.org/3/movie/now_playing', options)
 /*
   let inganer;
   response.result.forEach(item => {
-    if(item..result.genre_ids.inculdes(genre)){
-      inganer += item;
+    if(item.genre_ids.inculdes(genre)){
+      inganer += {...item};
     }
   })
   
