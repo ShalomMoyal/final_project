@@ -1,5 +1,7 @@
 const API_Token = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5OGQwZmYxOWJlNzEzYjkyMmQzYWRmZjUyMWM3ZDczNCIsInN1YiI6IjY1ODMzNWY5ZTI5NWI0M2NiYjY4NTMzYiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.SBTase5fJJEEeMpSTLMDBWxp4pY1S7OKVnSIoV5NzHk";
 
+
+
 function clearItems() {
   // Use querySelectorAll and forEach to remove items
   document.querySelectorAll(".item").forEach(item => {
@@ -7,6 +9,11 @@ function clearItems() {
   });
 }
 
+let FB =  document.getElementById("favoriButt");
+FB.addEventListener("click", function(){
+  clearItems();
+ // printDitels(localStorage); ---------------------------------------------------fix this code
+});
 
 
 function SearchMovie() {
@@ -76,6 +83,8 @@ function printDitels(response){
         section.appendChild(box);
         document.body.appendChild(section);
 
+        
+
         // Get the modal
         let modal = document.getElementById("myModal");
 
@@ -84,6 +93,7 @@ function printDitels(response){
 
         // Get the <span> element that closes the modal
         let span = document.getElementsByClassName("close")[0];
+        let favoritButt = document.getElementById("setToFavorit");
 
         let imgmodal =  document.getElementById("img-modal");
         let p_modal = document.getElementById("p-modal");
@@ -92,7 +102,13 @@ function printDitels(response){
           modal.style.display = "block";
         imgmodal.src ="https://www.themoviedb.org/t/p/w220_and_h330_face"+ itam.poster_path; 
         p_modal.innerText = itam.overview;
+        favoritButt.onclick = function(){
+          console.log("my item "+itam);
+       //   localStorage.setItem(itam); --------------------------------------------------------------fix this code
         }
+        
+        
+}
       
 
 // When the user clicks on <span> (x), close the modal

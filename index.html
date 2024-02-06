@@ -23,11 +23,12 @@
             <option value="documentary">Documentary</option>
         </select onclick=selectMovieByGenre()>
 
+        <button type="button" id="favoriButt" style="color: darkcyan;">&#10084;</button>
         <!--the search bar-->
         <form id="form">
             <input type="text" id="searchInput" placeholder="Search...">
             <button type="button" id="butt" onclick="SearchMovie()">Search</button>
-        </form>
+        </form>     
     </header>
                
     <!-- The Modal -->
@@ -37,8 +38,11 @@
       <div class="modal-content">
         <span class="close">&times;</span>
         <img src="" alt="" id="img-modal">
-        <p id="p-modal"></p>
-      </div>
+       <div>
+         <p id="p-modal"></p>
+         <button type="button" id="setToFavorit" style="color: red;" >&#10084; ADD</button>
+       </div> 
+    </div>
 
     </div>
 
